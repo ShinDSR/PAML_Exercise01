@@ -10,6 +10,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  bool eyeToggle = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +53,30 @@ class _LoginPageState extends State<LoginPage> {
             hintText: 'Enter your name',
             prefixIcon: Icon(Icons.person)
           ),
-        )
+        ),
+        Container(
+          height: 40,
+        ),
+        TextFormField(
+          keyboardType: TextInputType.text,
+          obscureText: eyeToggle,
+          controller: TextEditingController(),
+          decoration: InputDecoration(
+            labelText: 'Password',
+            hintText: 'Enter your password',
+            prefixIcon: Icon(Icons.lock),
+            suffix: InkWell(
+              onTap: (){
+                setState(() {
+                  eyeToggle = !eyeToggle;
+                });
+              },
+              child: Icon(
+                eyeToggle ? Icons.visibility : Icons.visibility_off
+              ),
+            )
+          ),
+        ),
       ],
       ),
     );
