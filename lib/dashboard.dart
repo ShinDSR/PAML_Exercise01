@@ -1,3 +1,4 @@
+import 'package:exercise01_paml/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -36,9 +37,17 @@ class Dashboard extends StatelessWidget {
             height: 100,
           ),
           Container(
-            height: 100,
+            height: 200,
           ),
-          
+          FloatingActionButton(
+            child: Icon(Icons.arrow_forward),
+            backgroundColor: Colors.cyan,
+            onPressed: (){
+              Navigator.pushReplacement(
+                context, MaterialPageRoute(
+                  builder: (context) => LoginPage()));
+            },
+          )
         ],
         )
       ),
