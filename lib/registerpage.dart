@@ -46,7 +46,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               Container(
                 width: 300,
-                height: 50,
+                height: 60,
                 child: TextFormField(
                   keyboardType: TextInputType.name,
                   controller: nameData,
@@ -68,7 +68,25 @@ class _RegisterPageState extends State<RegisterPage> {
                   },
                 ),
               ),
-              
+              Container(
+                height: 20,
+              ),
+              Container(
+                width: 300,
+                height: 60,
+                child: TextFormField(
+                  keyboardType: TextInputType.emailAddress,
+                  controller: emailData,
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    hintText: 'Enter your email',
+                    prefixIcon: Icon(Icons.mail),
+                    labelStyle: TextStyle(
+                      fontWeight: FontWeight.bold
+                    )
+                  ),
+                ),
+              ),
             ]),
           ),
         )),
