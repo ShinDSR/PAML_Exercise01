@@ -19,17 +19,31 @@ class Dashboard extends StatelessWidget {
             'Pokedex.',
             style: TextStyle(
               color: Colors.red, 
-              fontSize: 50, 
+              fontSize: 60, 
               fontWeight: FontWeight.bold
             ),
           ),
           Container(
             height: 50,
           ),
-          const Text('Welcome to Pokedex'),
-          const Text('You can find your favorite pokemon here'),
+          const Text(
+            'Welcome to Pokedex',
+            style: TextStyle(
+              color: Colors.brown,
+              fontWeight: FontWeight.bold,
+              fontSize: 15
+            ),
+          ),
+          const Text(
+            'You can find your favorite pokemon here',
+            style: TextStyle(
+              color: Colors.brown,
+              fontWeight: FontWeight.bold,
+              fontSize: 15
+            ),
+          ),
           Container(
-            height: 100,
+            height: 150,
           ),
           Image.asset(
             'assets/images/pokeball.jpg',
