@@ -38,8 +38,21 @@ class _LoginPageState extends State<LoginPage> {
           height: 20,
         ),
         const Text("There's No Sense In Going On Of"),
-        const Text('Your Way To Get Somebody To Like You')
-      ],),
+        const Text('Your Way To Get Somebody To Like You'),
+        Container(
+          height: 40,
+        ),
+        TextFormField(
+          keyboardType: TextInputType.name,
+          controller: TextEditingController(),
+          decoration: InputDecoration(
+            labelText: 'Nama',
+            hintText: 'Enter your name',
+            prefixIcon: Icon(Icons.person)
+          ),
+        )
+      ],
+      ),
     );
   }
 }
