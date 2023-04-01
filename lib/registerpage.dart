@@ -40,7 +40,35 @@ class _RegisterPageState extends State<RegisterPage> {
                   fontSize: 25,
                   fontWeight: FontWeight.bold
                 ),
-              )
+              ),
+              Container(
+                height: 50,
+              ),
+              Container(
+                width: 300,
+                height: 50,
+                child: TextFormField(
+                  keyboardType: TextInputType.name,
+                  controller: nameData,
+                  decoration: InputDecoration(
+                    labelText: 'Name',
+                    hintText: 'Enter your name',
+                    prefixIcon: Icon(Icons.person),
+                    labelStyle: TextStyle(
+                      fontWeight: FontWeight.bold
+                    )
+                  ),
+                  validator: (value) {
+                    bool valid = RegExp(
+                      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                      .hasMatch(value!);
+                    if(value.isEmpty){
+                      return 'Please enter your name';
+                    }
+                  },
+                ),
+              ),
+              
             ]),
           ),
         )),
