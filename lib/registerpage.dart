@@ -16,7 +16,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final passData = TextEditingController();
   final rePass = TextEditingController();
   
-  bool eyeToggle = true;
+  bool Toggle = true;
 
   @override
   Widget build(BuildContext context) {
@@ -110,11 +110,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     suffix: InkWell(
                       onTap: (){
                         setState(() {
-                          eyeToggle = !eyeToggle;
+                          Toggle = !Toggle;
                         });
                       },
                       child: Icon(
-                        eyeToggle ? Icons.visibility : Icons.visibility_off
+                        Toggle ? Icons.visibility_off : Icons.visibility
                       ),
                     )
                   ),
@@ -147,11 +147,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     suffix: InkWell(
                       onTap: (){
                         setState(() {
-                          eyeToggle = !eyeToggle;
+                          Toggle = !Toggle;
                         });
                       },
                       child: Icon(
-                        eyeToggle ? Icons.visibility : Icons.visibility_off
+                        Toggle ? Icons.visibility : Icons.visibility_off
                       )
                     )
                   ),
