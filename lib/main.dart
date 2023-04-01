@@ -1,5 +1,6 @@
 import 'package:exercise01_paml/dashboard.dart';
 import 'package:exercise01_paml/loginpage.dart';
+import 'package:exercise01_paml/registerpage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const LoginPage(),
+      home: const RegisterPage(),
     );
   }
 }
