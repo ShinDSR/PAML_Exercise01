@@ -19,8 +19,7 @@ class Dashboard extends StatelessWidget {
             style: TextStyle(
               color: Colors.red, 
               fontSize: 50, 
-              fontWeight: 
-              FontWeight.bold
+              fontWeight: FontWeight.bold
             ),
           ),
           Container(
