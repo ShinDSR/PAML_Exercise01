@@ -14,6 +14,10 @@ class _RegisterPageState extends State<RegisterPage> {
   final nameData = TextEditingController();
   final emailData = TextEditingController();
   final passData = TextEditingController();
+  final rePass = TextEditingController();
+  
+  bool eyeToggle = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,6 +89,80 @@ class _RegisterPageState extends State<RegisterPage> {
                       fontWeight: FontWeight.bold
                     )
                   ),
+                ),
+              ),
+              Container(
+                height: 20,
+              ),
+              Container(
+                width: 300,
+                height: 60,
+                child: TextFormField(
+                  keyboardType: TextInputType.text,
+                  controller: passData,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    hintText: 'Enter your password',
+                    prefixIcon: Icon(Icons.lock),
+                    labelStyle: TextStyle(
+                      fontWeight: FontWeight.bold
+                    ),
+                    suffix: InkWell(
+                      onTap: (){
+                        setState(() {
+                          eyeToggle = !eyeToggle;
+                        });
+                      },
+                      child: Icon(
+                        eyeToggle ? Icons.visibility : Icons.visibility_off
+                      ),
+                    )
+                  ),
+                  validator: (value){
+                    if(value!.isEmpty){
+                      return 'Please enter your password';
+                    }
+                    else if(passData.text.length < 6){
+                      return 'Password must be atleast 6 characters';
+                    }
+                  },
+                )
+              ),
+              Container(
+                height: 20,
+              ),
+              Container(
+                width: 300,
+                height: 60,
+                child: TextFormField(
+                  keyboardType: TextInputType.text,
+                  controller: rePass,
+                  decoration: InputDecoration(
+                    labelText: 'Re-Password',
+                    hintText: 'Re-Enter your password',
+                    prefixIcon: Icon(Icons.lock),
+                    labelStyle: TextStyle(
+                      fontWeight: FontWeight.bold
+                    ),
+                    suffix: InkWell(
+                      onTap: (){
+                        setState(() {
+                          eyeToggle = !eyeToggle;
+                        });
+                      },
+                      child: Icon(
+                        eyeToggle ? Icons.visibility : Icons.visibility_off
+                      )
+                    )
+                  ),
+                  validator: (value){
+                    if(value!.isEmpty){
+                      return 'Please re-enter your password';
+                    }
+                    else if(rePass!= passData){
+                      return 'Password must be atleast 6 characters';
+                    }
+                  }
                 ),
               ),
             ]),
