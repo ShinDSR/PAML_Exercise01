@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     Container(
                         width: 300,
-                        height: 60,
+                        height: 80,
                         child: TextFormField(
                           keyboardType: TextInputType.name,
                           controller: TextEditingController(),
@@ -87,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     Container(
                       width: 300,
-                      height: 60,
+                      height: 80,
                       child: TextFormField(
                         keyboardType: TextInputType.text,
                         obscureText: Toggle,
