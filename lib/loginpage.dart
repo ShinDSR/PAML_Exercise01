@@ -1,3 +1,4 @@
+import 'package:exercise01_paml/registerpage.dart';
 import 'package:flutter/material.dart';
 //import 'package:flutter/src/widgets/framework.dart';
 //import 'package:flutter/src/widgets/placeholder.dart';
@@ -93,19 +94,47 @@ class _LoginPageState extends State<LoginPage> {
                               Toggle = !Toggle;
                             });
                           },
-                          child: Icon(Toggle
-                              ? Icons.visibility_off
-                              : Icons.visibility),
-                        )
-                      ),
+                          child: Icon(
+                              Toggle ? Icons.visibility_off : Icons.visibility),
+                        )),
                   ),
                 ),
                 Container(
                   height: 30,
+                ),
+                Container(
+                  width: 300,
+                  height: 60,
+                  child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Don't have an account?",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.brown),
+                      ),
+                      Container(
+                        width: 5,
+                      ),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => RegisterPage()));
+                          },
+                          child: Text(
+                            'Sign Up',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 8, 14, 203)
+                            ),
+                          )
+                        )
+                    ],
+                  ),
                 )
               ],
-            )
-          ),
+            )),
       ),
     );
   }
