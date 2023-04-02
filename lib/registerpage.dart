@@ -1,3 +1,4 @@
+import 'package:exercise01_paml/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -26,6 +27,21 @@ class _RegisterPageState extends State<RegisterPage> {
           child: Form(
             key: _regData,
             child: Column(children: [
+              Container(
+                height: 30,
+              ),
+              Container(
+                child: Row(children: [
+                  FloatingActionButton.small(
+                child: Icon(Icons.arrow_back),
+                onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage())
+                );
+              }),
+                ]),
+              ),              
               Container(
                 height: 80,
               ),
@@ -63,12 +79,13 @@ class _RegisterPageState extends State<RegisterPage> {
                     )
                   ),
                   validator: (value) {
-                    bool valid = RegExp(
-                      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                      .hasMatch(value!);
-                    if(value.isEmpty){
+                    if(value == null || value.isEmpty){
                       return 'Please enter your name';
                     }
+                    else if(value.length < 6){
+                      return 'Name must be atleast 6 characters';
+                    }
+                    return null;
                   },
                 ),
               ),
@@ -89,6 +106,15 @@ class _RegisterPageState extends State<RegisterPage> {
                       fontWeight: FontWeight.bold
                     )
                   ),
+                  validator: (value){
+                    if(value == null || value.isEmpty){
+                      return ' Please enter your email';
+                    }
+                    else if(!value.contains('@') || !value.contains('.')){
+                      return 'Please enter a valid email address';
+                    }
+                    return null;
+                  },
                 ),
               ),
               Container(
@@ -119,12 +145,13 @@ class _RegisterPageState extends State<RegisterPage> {
                     )
                   ),
                   validator: (value){
-                    if(value!.isEmpty){
+                    if(value == null || value.isEmpty){
                       return 'Please enter your password';
                     }
                     else if(passData.text.length < 6){
                       return 'Password must be atleast 6 characters';
                     }
+                    return null;
                   },
                 )
               ),
@@ -159,8 +186,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     if(value!.isEmpty){
                       return 'Please re-enter your password';
                     }
-                    else if(rePass!= passData){
-                      return 'Password must be atleast 6 characters';
+                    else if(value != passData.text){
+                      return 'Password must be same';
                     }
                   }
                 ),
