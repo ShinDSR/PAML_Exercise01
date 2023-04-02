@@ -1,3 +1,4 @@
+import 'package:exercise01_paml/homepage.dart';
 import 'package:exercise01_paml/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -18,6 +19,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final rePass = TextEditingController();
   
   bool Toggle = true;
+  bool Toggle2 = true;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ]),
               ),              
               Container(
-                height: 80,
+                height: 60,
               ),
               Image.asset(
                 'assets/images/pik-logo.jpg',
@@ -51,7 +53,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 100,
               ),
               Container(
-                height: 50,
+                height: 40,
               ),
               const Text(
                 'Register',
@@ -66,7 +68,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               Container(
                 width: 300,
-                height: 60,
+                height: 75,
                 child: TextFormField(
                   keyboardType: TextInputType.name,
                   controller: nameData,
@@ -90,11 +92,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               Container(
-                height: 20,
+                height: 10,
               ),
               Container(
                 width: 300,
-                height: 60,
+                height: 75,
                 child: TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   controller: emailData,
@@ -118,11 +120,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               Container(
-                height: 20,
+                height: 10,
               ),
               Container(
                 width: 300,
-                height: 60,
+                height: 75,
                 child: TextFormField(
                   keyboardType: TextInputType.text,
                   controller: passData,
@@ -156,11 +158,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 )
               ),
               Container(
-                height: 20,
+                height: 10,
               ),
               Container(
                 width: 300,
-                height: 60,
+                height: 75,
                 child: TextFormField(
                   keyboardType: TextInputType.text,
                   controller: rePass,
@@ -174,11 +176,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     suffix: InkWell(
                       onTap: (){
                         setState(() {
-                          Toggle = !Toggle;
+                          Toggle2 = !Toggle2;
                         });
                       },
                       child: Icon(
-                        Toggle ? Icons.visibility : Icons.visibility_off
+                        Toggle2 ? Icons.visibility : Icons.visibility_off
                       )
                     )
                   ),
@@ -192,6 +194,26 @@ class _RegisterPageState extends State<RegisterPage> {
                   }
                 ),
               ),
+              Container(
+                height: 30,
+              ),
+              FilledButton(
+                child: Text(
+                  'Register',
+                  style: TextStyle(
+                    color: Colors.white, fontWeight: FontWeight.bold
+                  ),
+                ),
+                onPressed: () {
+                  if(_regData.currentState!.validate()){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomePage(nama: nameData.text))
+                    );
+                  }
+                },
+              )
             ]),
           ),
         )),

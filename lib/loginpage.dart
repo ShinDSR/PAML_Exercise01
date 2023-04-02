@@ -75,12 +75,10 @@ class _LoginPageState extends State<LoginPage> {
                           hintText: 'Enter your name',
                           prefixIcon: Icon(Icons.person)),
                       validator: (value) {
-                        bool valid = RegExp(
-                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                          .hasMatch(value!);
-                        if (value!.isEmpty) {
+                        if (value== null || value.isEmpty) {
                           return 'Please enter your name';
                         }
+                        return null;
                       },
                     )),
                 Container(
@@ -108,11 +106,12 @@ class _LoginPageState extends State<LoginPage> {
                         )
                       ),
                     validator: (value) {
-                      if (value!.isEmpty) {
+                      if (value==null || value.isEmpty) {
                         return 'Please enter your password';
                       } else if (passData.text.length < 6) {
                         return 'Password must be atleast 6 characters';
                       }
+                      return null;
                     },
                   ),
                 ),
@@ -127,11 +126,10 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     onPressed: () {
                       if (_logData.currentState!.validate()) {
-                        print('Login Success');
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => HomePage(),
+                              builder: (context) => HomePage(nama: nameData.text,),
                             ));
                       }
                     }),
