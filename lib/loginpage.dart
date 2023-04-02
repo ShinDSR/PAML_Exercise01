@@ -1,3 +1,4 @@
+import 'package:exercise01_paml/homepage.dart';
 import 'package:exercise01_paml/registerpage.dart';
 import 'package:flutter/material.dart';
 //import 'package:flutter/src/widgets/framework.dart';
@@ -73,6 +74,14 @@ class _LoginPageState extends State<LoginPage> {
                           labelText: 'Name',
                           hintText: 'Enter your name',
                           prefixIcon: Icon(Icons.person)),
+                      validator: (value) {
+                        bool valid = RegExp(
+                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                          .hasMatch(value!);
+                        if (value!.isEmpty) {
+                          return 'Please enter your name';
+                        }
+                      },
                     )),
                 Container(
                   height: 30,
@@ -96,21 +105,50 @@ class _LoginPageState extends State<LoginPage> {
                           },
                           child: Icon(
                               Toggle ? Icons.visibility_off : Icons.visibility),
-                        )),
+                        )
+                      ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your password';
+                      } else if (passData.text.length < 6) {
+                        return 'Password must be atleast 6 characters';
+                      }
+                    },
                   ),
                 ),
                 Container(
                   height: 30,
                 ),
+                FilledButton(
+                    child: Text(
+                      'Login',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () {
+                      if (_logData.currentState!.validate()) {
+                        print('Login Success');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomePage(),
+                            ));
+                      }
+                    }),
+                Container(
+                  height: 20,
+                ),
                 Container(
                   width: 300,
                   height: 60,
-                  child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         "Don't have an account?",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.brown),
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 148, 207, 226)),
                       ),
                       Container(
                         width: 5,
@@ -125,11 +163,9 @@ class _LoginPageState extends State<LoginPage> {
                           child: Text(
                             'Sign Up',
                             style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 8, 14, 203)
-                            ),
-                          )
-                        )
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 8, 14, 203)),
+                          ))
                     ],
                   ),
                 )
